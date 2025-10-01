@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santo Grau - Experimente Óculos Virtualmente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Barra superior removida -->
+        <header>
+            <div class="logo">
+                <h1>SANTO GRAU</h1>
+            </div>
+            <div class="header-actions">
+                <div class="brand-details">
+                    <span class="brand-detail">Experimente Óculos Virtualmente</span>
+                </div>
+            </div>
+        </header>
+        <div class="yellow-bar"></div>
+
+        <main>
+            <div class="upload-section">
+                <div class="upload-container">
+                    <div class="upload-box" id="face-upload">
+                        <div class="upload-icon">
+                            <img src="{{ url_for('static', filename='images/face-icon.svg') }}" alt="Ícone de rosto"
+                                onerror="this.src='https://via.placeholder.com/50?text=Rosto'">
+                        </div>
+                        <h3>Foto do Rosto</h3>
+                        <p>Faça upload de uma foto frontal do seu rosto</p>
+                        <label for="face-input" class="upload-button">Selecionar Foto</label>
+                        <input type="file" id="face-input" accept="image/png, image/jpeg" hidden>
+                        <div class="preview" id="face-preview"></div>
+                    </div>
+
+                    <div class="upload-box" id="glasses-upload">
+                        <div class="upload-icon">
+                            <img src="{{ url_for('static', filename='images/glasses-icon.svg') }}" alt="Ícone de óculos"
+                                onerror="this.src='https://via.placeholder.com/50?text=Óculos'">
+                        </div>
+                        <h3>Foto dos Óculos</h3>
+                        <p>Faça upload de uma foto dos óculos que deseja experimentar</p>
+                        <label for="glasses-input" class="upload-button">Selecionar Foto</label>
+                        <input type="file" id="glasses-input" accept="image/png, image/jpeg" hidden>
+                        <div class="preview" id="glasses-preview"></div>
+                    </div>
+                </div>
+
+                <button id="generate-button" class="generate-button" disabled>Gerar Visualização</button>
+            </div>
+
+            <div class="result-section" id="result-section" style="display: none;">
+                <h2>Sua Visualização</h2>
+                <div class="result-container">
+                    <div class="result-image">
+                        <img id="result-img" src="" alt="Resultado">
+                    </div>
+                    <div class="result-actions">
+                        <button id="download-button" class="action-button">Baixar Imagem</button>
+                        <button id="share-button" class="action-button">Compartilhar</button>
+                        <button id="try-again-button" class="action-button secondary">Tentar Novamente</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="loading-overlay" id="loading-overlay">
+                <div class="spinner"></div>
+                <p>Gerando sua visualização...</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Santo Grau. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
